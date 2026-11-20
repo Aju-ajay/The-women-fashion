@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jananai | women Fashion Store</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fffaf7;
+  color: #333;
+}
+
+header {
+  background: #f5e6e1;
+  text-align: center;
+  padding: 28px 15px;
+}
+
+header h1 {
+  font-family: Georgia, serif;
+  font-size: 38px;
+  color: #9b5d65;
+  letter-spacing: 4px;
+}
+
+header p {
+  margin-top: 8px;
+  color: #765d5d;
+  font-size: 14px;
+}
+
+nav {
+  background: white;
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+nav a {
+  text-decoration: none;
+  color: #8b5960;
+  margin: 0 15px;
+  font-size: 14px;
+}
+
+.hero {
+  padding: 55px 20px;
+  text-align: center;
+  background: #fdf0ec;
+}
+
+.hero h2 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  color: #9b5d65;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: #655454;
+  margin-bottom: 22px;
+}
+
+.hero button {
+  padding: 12px 25px;
+  background: #9b5d65;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-family: Georgia, serif;
+  color: #9b5d65;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.search-box {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto 20px;
+  padding: 12px;
+  border: 1px solid #e4c9c9;
+  border-radius: 25px;
+  outline: none;
+}
+
+.filters {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.filters button {
+  padding: 9px 18px;
+  margin: 5px;
+  border: 1px solid #d8b6b6;
+  background: white;
+  color: #8b5960;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.filters button.active,
+.filters button:hover {
+  background: #9b5d65;
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.product {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px #0000000d;
+  transition: transform 0.2s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+.product img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.product-info h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.price {
+  color: #9b5d65;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.product-info a {
+  display: block;
+  text-decoration: none;
+  background: #9b5d65;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.product-info a:hover {
+  background: #75444c;
+}
+
+footer {
+  text-align: center;
+  background: #f5e6e1;
+  padding: 25px;
+  margin-top: 40px;
+  color: #765d5d;
+}
+
+@media (max-width: 800px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 450px) {
+  header h1 {
+    font-size: 28px;
+  }
+
+  .hero h2 {
+    font-size: 27px;
+  }
+
+  .product img {
+    height: 200px;
+  }
+
+  nav a {
+    margin: 0 8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>JANANAI</h1>
+  <p>Discover your everyday style ✨</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#collection">Collection</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero" id="home">
+  <h2>Style that feels like you</h2>
+  <p>Beautiful outfits, lovely prices and a little happiness in every dress.</p>
+  <button onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
+    Explore Collection
+  </button>
+</section>
+
+<section class="container" id="collection">
+
+  <h2 class="section-title">Our Collection</h2>
+
+  <input
+    type="text"
+    class="search-box"
+    id="search"
+    placeholder="Search your favourite dress..."
+    oninput="searchProducts()"
+  >
+
+  <div class="filters">
+    <button class="active" onclick="filterProducts('all', this)">All</button>
+    <button onclick="filterProducts('kurti', this)">Kurtis</button>
+    <button onclick="filterProducts('dress', this)">Dresses</button>
+    <button onclick="filterProducts('churidar', this)">Churidar</button>
+  </div>
+
+  <div class="products" id="productList">
+
+    <!-- PRODUCT 1 -->
+    <div class="product" data-category="Short kurti" data-name="Cotton Short Kurti">
+      <img src="https://sanimgcdn.com/u/8761cea1e30085787c50334a855e48a4.png"
+           alt="Cotton Short Kurti">
+      <div class="product-info">
+        <h3>Cotton Short Kurti</h3>
+        <p class="price">₹499</p>
+        <a href="https://www.amazon.in/ANNI-Designer-Viscose-AHWAR-Rani_M_Rani_Medium/dp/B0GSJZ3JF7?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=A1WYWER0W24N8S&th=1&psc=1"
+           target="_blank" rel="noopener noreferrer">View Dress</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product" data-category="Rayon Ajrakh Print Short Kurti" data-name="Rayon Ajrakh Print Short Kurti">
+      <img src="https://sanimgcdn.com/u/41b5915597f71ab6b1da2cede345bb3c.png"
+           alt="Rayon Ajrakh Print Short Kurti">
+      <div class="product-info">
+        <h3>Rayon Ajrakh Print Short Kurti</h3>
+        <p class="price">₹449</p>
+        <a href="https://www.amazon.in/Jodaa-Womens-Stylish-Indo-Western-Adjustable/dp/B0HGGJPYTK/ref=asc_df_B0HGGJPYTK?mcid=2d9c0fe2552830a49f00744621c1fa35&tag=googleshopdes-21&linkCode=df0&hvadid=823989502970&hvpos=&hvnetw=g&hvrand=16621765935486168576&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9211194&hvtargid=pla-2502049684738&hvcampaign=24193793032&hvocijid=16621765935486168576-B0HGGJPYTK-&hvexpln=0&gad_source=4&th=1&psc=1"
+           target="_blank" rel="noopener noreferrer">View Dress</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="product" data-category="Cotton Kurta Palazzo Set" data-name="Cotton Kurta Palazzo Set">
+      <img src="https://sanimgcdn.com/u/1f0cd3d7880e17f039b3d71357195faa.png"
+           alt="Cotton Kurta Palazzo Set">
+      <div class="product-info">
+        <h3>Cotton Kurta Palazzo Set</h3>
+        <p class="price">₹599</p>
+        <a href="https://www.amazon.in/dp/B0GGJ6Z3LB/ref=sspa_dk_detail_5?pd_rd_i=B0GGJ6Z3LB&pd_rd_w=fhv02&content-id=amzn1.sym.cebd979a-4e06-4bc9-ba7d-b9887a34ed18&pf_rd_p=cebd979a-4e06-4bc9-ba7d-b9887a34ed18&pf_rd_r=PGM99ZP9GGSHPXHKNAHH&pd_rd_wg=75A2b&pd_rd_r=673b253f-c149-4c13-b9e6-3f0adbd232a6&aref=iiWyn8Uhur&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM&th=1&psc=1"
+           target="_blank" rel="noopener noreferrer">View Dress</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 4 -->
+    <div class="product" data-category="Rayon Printed Anarkali Kurta" data-name="Rayon Printed Anarkali Kurta">
+      <img src="https://sanimgcdn.com/u/5da5f901441038c4a0b6c573cb288c37.png"
+           alt="Rayon Printed Anarkali Kurta">
+      <div class="product-info">
+        <h3>Rayon Printed Anarkali Kurta</h3>
+        <p class="price">₹799</p>
+        <a href="https://www.google.com/search?q=women+traditional+churidar+set"
+           target="_blank" rel="noopener noreferrer">View Dress</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer id="contact">
+  <h3>JANANAI</h3>
+  <p>Thank you for visiting our little fashion world ❤️</p>
+  <p>Contact us for enquiries and orders</p>
+</footer>
+
+<script>
+let currentCategory = "all";
+
+function filterProducts(category, button) {
+  currentCategory = category;
+
+  document.querySelectorAll(".filters button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+  searchProducts();
+}
+
+function searchProducts() {
+  const searchText = document.getElementById("search").value.toLowerCase();
+
+  document.querySelectorAll(".product").forEach(product => {
+    const category = product.dataset.category;
+    const name = product.dataset.name;
+
+    const categoryMatch =
+      currentCategory === "all" || category === currentCategory;
+
+    const searchMatch = name.includes(searchText);
+
+    product.style.display =
+      categoryMatch && searchMatch ? "" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
